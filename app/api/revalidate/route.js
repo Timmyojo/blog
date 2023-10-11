@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
     const secret = request.nextUrl.searchParams.get('secret');
 
-    if (secret !== 'secret') {
+    if (secret !== process.env.SECRET) {
         return new NextResponse(JSON.stringify({ message: 'Invalid token' }),
             {
                 status: 401,
